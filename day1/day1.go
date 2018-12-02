@@ -5,13 +5,12 @@ import (
 	"io/ioutil"
 	"strconv"
 	"strings"
-	"time"
 )
 
 
-func exists(a []interface{}, item interface{}) bool {
+func exists(a []int, item int) bool {
 	for _, n := range a{
-		if item.(int) == n.(int) {
+		if item == n {
 			return true
 		}
 	}
@@ -38,7 +37,7 @@ func part1(strArray []string){
 
 func part2(strArray []string) {
 	freq := 0
-	var checked []interface{}
+	var checked []int
 	exist := false
 
 	for !exist {
@@ -70,10 +69,7 @@ func main(){
 	}
 	strArray := strings.Fields(string(b))
 	part1(strArray)
-	start := time.Now()
 	part2(strArray)
-	end := time.Now().Sub(start)
-	fmt.Println(end)
 
 
 }
