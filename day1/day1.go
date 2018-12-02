@@ -1,21 +1,23 @@
-package day1
+package main
 
 import (
 	"fmt"
 	"io/ioutil"
 	"strconv"
 	"strings"
+	"time"
 )
 
 
-func exists(a []int, freq int) bool {
+func exists(a []interface{}, item interface{}) bool {
 	for _, n := range a{
-		if freq == n {
+		if item.(int) == n.(int) {
 			return true
 		}
 	}
 	return false
 }
+
 
 
 func part1(strArray []string){
@@ -36,7 +38,7 @@ func part1(strArray []string){
 
 func part2(strArray []string) {
 	freq := 0
-	var checked []int
+	var checked []interface{}
 	exist := false
 
 	for !exist {
@@ -62,13 +64,16 @@ func part2(strArray []string) {
 
 
 func main(){
-	b, err := ioutil.ReadFile("day1.txt")
+	b, err := ioutil.ReadFile("./day1/day1.txt")
 	if err != nil {
 		fmt.Print(err)
 	}
 	strArray := strings.Fields(string(b))
 	part1(strArray)
+	start := time.Now()
 	part2(strArray)
+	end := time.Now().Sub(start)
+	fmt.Println(end)
 
 
 }
