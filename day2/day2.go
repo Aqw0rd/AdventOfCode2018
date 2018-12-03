@@ -75,7 +75,12 @@ func main(){
 	if err != nil {
 		fmt.Print(err)
 	}
-	strArray := strings.Fields(string(b))
+	strArray := strings.FieldsFunc(string(b), func(r rune) bool {
+		if r == '\n' {
+			return true
+		}
+		return false
+	})
 	part1(strArray)
 	part2(strArray)
 }
